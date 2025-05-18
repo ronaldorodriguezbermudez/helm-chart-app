@@ -1,0 +1,39 @@
+namespace: jdmapp
+# frontend
+frontend:
+  name: frontend
+  port: 3000
+  image: 
+    name: ronaldorb/frontend
+    tag: v1.0.5
+  replicas: 1
+
+
+
+#backend
+backend: 
+  name: backend
+  port: 5000
+  image: 
+    name: ronaldorb/backend
+    tag: v1.0.0
+  replicas: 1
+  service:
+    name: backend-service  #Do not change this name. It is hardcoded in the frontend configuration used during the image build process. This limitation will be addressed in future versions.
+
+#db
+db:
+  name: db
+  image: 
+    name: ronaldorb/jdm-cars-db
+    tag: v1.0.0
+  replicas: 1
+  port: 3306
+
+pvc:
+  name: db-data
+  storage: 5Gi
+
+
+secret:
+  name: db-secret

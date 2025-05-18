@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
+  namespace: {{.Values.namespace}}
+spec:
+  replicas: {{.Values.frontend.replicas}} 
+  selector:
+    matchLabels:
+      app: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
+  template:
+    metadata:
+      labels:
+        app: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
+    spec:
+      containers:
+      - name: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
+        image: "{{.Values.frontend.image.name}}:{{.Values.frontend.image.tag}}"
+        ports:
+        - containerPort: {{.Values.frontend.port}} 
+        env:
+        - name: REACT_APP_BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
+              key: REACT_APP_BACKEND_URL
