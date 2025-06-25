@@ -1,4 +1,4 @@
-namespace: jdmapp2
+namespace: jdmapp
 # frontend
 frontend:
   name: frontend
