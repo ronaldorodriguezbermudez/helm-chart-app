@@ -9,6 +9,6 @@ entries:
     name: jdmapp
     type: application
     urls:
-    - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.0.tgz
-    version: 0.1.0
+    - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.1.tgz
+    version: 0.1.1
 generated: "2025-06-24T21:22:06.61769483-06:00"
