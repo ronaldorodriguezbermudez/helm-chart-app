@@ -1,4 +1,3 @@
-# .github/workflows/update-chart.yml en helm-chart-app
 permissions:
   contents: write
 
@@ -28,15 +27,25 @@ jobs:
           sed -i "/backend:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
           sed -i "/db:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
 
+      - name: Update version and appVersion in Chart.yaml
+        run: |
+          # Actualizar version del chart
+          sed -i "s/^version:.*/version: 0.1.${{ github.run_number }}/" jdmapp/Chart.yaml
+          # Actualizar appVersion con los tags de las imágenes (por simplicidad se puede usar el tag frontend, o ajustar si querés)
+          sed -i "s/^appVersion:.*/appVersion: \"frontend: ${{ github.event.client_payload.frontend_tag }}, backend: ${{ github.event.client_payload.backend_tag }}, db: ${{ github.event.client_payload.db_tag }}\"/" jdmapp/Chart.yaml
+
       - name: Package Helm Chart
         run: helm package jdmapp
 
       - name: Publish Helm Chart
+        env:
+          TOKEN: ${{ secrets.PAT_GITHUB }}
         run: |
           mv jdmapp-*.tgz docs/
           helm repo index docs/ --url https://ronaldorodriguezbermudez.github.io/helm-chart-app/
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add jdmapp/values.yaml docs/
-          git commit -m "Update Helm Chart to version ${{ github.event.client_payload.frontend_tag }}"
-          git push
+          git add jdmapp/values.yaml jdmapp/Chart.yaml docs/
+          git commit -m "Update Helm Chart to version 0.1.${{ github.run_number }} with appVersions updated"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/ronaldorodriguezbermudez/helm-chart-app.git
+          git push origin HEAD:main
