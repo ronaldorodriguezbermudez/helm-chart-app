@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   jdmapp:
   - apiVersion: v2
+    appVersion: 'frontend: v1.0.34, backend: v1.0.34, db: v1.0.34'
+    created: "2025-06-29T21:07:23.366611226Z"
+    description: A Helm chart for Kubernetes
+    digest: d52ad02955b81e96763e947e7bd8c4f627729f8acc5aa243c73ebf30220bab7e
+    name: jdmapp
+    type: application
+    urls:
+    - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.23.tgz
+    version: 0.1.23
+  - apiVersion: v2
     appVersion: 'frontend: v1.0.33, backend: v1.0.33, db: v1.0.33'
-    created: "2025-06-29T20:36:06.256930143Z"
+    created: "2025-06-29T21:07:23.366192216Z"
     description: A Helm chart for Kubernetes
     digest: b6b775ac116e1256e47efd113e5fb030e1ee7de9618e8a317114af4c83fba748
     name: jdmapp
@@ -13,7 +23,7 @@ entries:
     version: 0.1.22
   - apiVersion: v2
     appVersion: 'frontend: v1.0.32, backend: v1.0.32, db: v1.0.32'
-    created: "2025-06-29T20:36:06.256570742Z"
+    created: "2025-06-29T21:07:23.365829269Z"
     description: A Helm chart for Kubernetes
     digest: a9dfb7b43a307d32c0ecdb0d0c0723351bc4b8c34d6e3812f683dd3538f0d9db
     name: jdmapp
@@ -23,7 +33,7 @@ entries:
     version: 0.1.21
   - apiVersion: v2
     appVersion: 'frontend: v1.0.24, backend: v1.0.24, db: v1.0.24'
-    created: "2025-06-29T20:36:06.256160605Z"
+    created: "2025-06-29T21:07:23.365443662Z"
     description: A Helm chart for Kubernetes
     digest: 252c90eb4121659a38338998665e70266dfc448ddfe44682d5ae918fb5fabeb4
     name: jdmapp
@@ -33,7 +43,7 @@ entries:
     version: 0.1.13
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-06-29T20:36:06.255768142Z"
+    created: "2025-06-29T21:07:23.365031194Z"
     description: A Helm chart for Kubernetes
     digest: fc34d73929ab4eb864a953b351fc3d3e35ba82b655bfc42010d256291e4d6c95
     name: jdmapp
@@ -41,4 +51,4 @@ entries:
     urls:
     - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.1.tgz
     version: 0.1.1
-generated: "2025-06-29T20:36:06.255204528Z"
+generated: "2025-06-29T21:07:23.364491989Z"
