@@ -4,7 +4,7 @@ frontend:
   name: frontend
   port: 3000
   image: 
-    name: ronaldorb/frontend
+    name: ronaldorb/jdm-cars-frontend
     tag: v1.0.19
   replicas: 1
 
@@ -15,7 +15,7 @@ backend:
   name: backend
   port: 5000
   image: 
-    name: ronaldorb/backend
+    name: ronaldorb/jdm-cars-backend
     tag: v1.0.19
   replicas: 1
   service:
