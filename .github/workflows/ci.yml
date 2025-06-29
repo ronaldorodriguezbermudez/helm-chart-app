@@ -23,9 +23,9 @@ jobs:
 
       - name: Update image tags in values.yaml
         run: |
-          sed -i "/frontend:/,/replicas:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.frontend_tag }}|" jdmapp/values.yaml
-          sed -i "/backend:/,/replicas:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
-          sed -i "/db:/,/port:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
+          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-frontend.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.frontend_tag }}|" jdmapp/values.yaml
+          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-backend.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
+          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-db.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
 
 
       - name: Update version and appVersion in Chart.yaml
