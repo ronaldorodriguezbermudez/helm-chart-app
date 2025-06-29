@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   jdmapp:
   - apiVersion: v2
+    appVersion: 'frontend: v1.0.24, backend: v1.0.24, db: v1.0.24'
+    created: "2025-06-29T06:04:57.334303021Z"
+    description: A Helm chart for Kubernetes
+    digest: acbd56298aafe6715c56f21c1d10f5b6d769dbc99625ed4c23ae111829a02aeb
+    name: jdmapp
+    type: application
+    urls:
+    - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-06-29T05:53:25.738216026Z"
+    created: "2025-06-29T06:04:57.333890323Z"
     description: A Helm chart for Kubernetes
     digest: fc34d73929ab4eb864a953b351fc3d3e35ba82b655bfc42010d256291e4d6c95
     name: jdmapp
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://ronaldorodriguezbermudez.github.io/helm-chart-app/jdmapp-0.1.1.tgz
     version: 0.1.1
-generated: "2025-06-29T05:53:25.737636433Z"
+generated: "2025-06-29T06:04:57.333392567Z"
