@@ -1,4 +1,7 @@
 # .github/workflows/update-chart.yml en helm-chart-app
+permissions:
+  contents: write
+
 name: Update Helm Chart
 
 on:
