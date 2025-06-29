@@ -38,8 +38,7 @@ jobs:
         run: helm package jdmapp
 
       - name: Publish Helm Chart
-        env:
-          TOKEN: ${{ secrets.PAT_GITHUB }}
+    
         run: |
           mv jdmapp-*.tgz docs/
           helm repo index docs/ --url https://ronaldorodriguezbermudez.github.io/helm-chart-app/
