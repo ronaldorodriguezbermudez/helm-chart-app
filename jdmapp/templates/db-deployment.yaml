@@ -5,6 +5,8 @@ metadata:
   namespace: {{.Values.namespace}}
 spec:
   replicas: {{.Values.db.replicas}}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: "{{.Values.db.name}}"
