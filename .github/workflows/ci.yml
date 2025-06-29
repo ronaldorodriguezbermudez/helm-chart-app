@@ -26,7 +26,7 @@ jobs:
           sed -i "/db:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
 
       - name: Package Helm Chart
-        run: helm package charts/jdmapp
+        run: helm package jdmapp
 
       - name: Publish Helm Chart
         run: |
