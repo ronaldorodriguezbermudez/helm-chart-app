@@ -37,6 +37,6 @@ jobs:
           helm repo index docs/ --url https://ronaldorodriguezbermudez.github.io/helm-chart-app/
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add docs/
+          git add docs/jdmapp/values.yaml docs/
           git commit -m "Update Helm Chart to version ${{ github.event.client_payload.frontend_tag }}"
           git push
