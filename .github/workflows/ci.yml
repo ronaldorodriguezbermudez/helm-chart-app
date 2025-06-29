@@ -20,13 +20,16 @@ jobs:
         uses: azure/setup-helm@v3
         with:
           version: v3.12.0
+      - name: Install yq
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
 
       - name: Update image tags in values.yaml
         run: |
-          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-frontend.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.frontend_tag }}|" jdmapp/values.yaml
-          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-backend.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
-          sed -i "s|^\(\s*name: ronaldorb/jdm-cars-db.*\)\n\(\s*tag: \).*|\1\n\2${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
-
+          yq -i ".frontend.image.tag = \"${{ github.event.client_payload.frontend_tag }}\"" jdmapp/values.yaml
+          yq -i ".backend.image.tag = \"${{ github.event.client_payload.backend_tag }}\"" jdmapp/values.yaml
+          yq -i ".db.image.tag = \"${{ github.event.client_payload.db_tag }}\"" jdmapp/values.yaml
 
       - name: Update version and appVersion in Chart.yaml
         run: |
