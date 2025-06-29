@@ -23,17 +23,9 @@ jobs:
 
       - name: Update image tags in values.yaml
         run: |
-          sed -i "/frontend:/,/replicas:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.frontend_tag }}|" jdmapp/values.yaml
-          sed -i "/backend:/,/replicas:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
-          sed -i "/db:/,/port:/s|^\s*tag:.*|tag: ${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
-
-
-      - name: Update version and appVersion in Chart.yaml
-        run: |
-          # Actualizar version del chart
-          sed -i "s/^version:.*/version: 0.1.${{ github.run_number }}/" jdmapp/Chart.yaml
-          # Actualizar appVersion con los tags de las imágenes (por simplicidad se puede usar el tag frontend, o ajustar si querés)
-          sed -i "s/^appVersion:.*/appVersion: \"frontend: ${{ github.event.client_payload.frontend_tag }}, backend: ${{ github.event.client_payload.backend_tag }}, db: ${{ github.event.client_payload.db_tag }}\"/" jdmapp/Chart.yaml
+          sed -i "/frontend:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.frontend_tag }}|" jdmapp/values.yaml
+          sed -i "/backend:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.backend_tag }}|" jdmapp/values.yaml
+          sed -i "/db:/,/tag:/s|tag: .*|tag: ${{ github.event.client_payload.db_tag }}|" jdmapp/values.yaml
 
       - name: Package Helm Chart
         run: helm package jdmapp
