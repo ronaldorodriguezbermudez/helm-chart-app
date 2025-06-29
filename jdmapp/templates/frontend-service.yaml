@@ -4,7 +4,7 @@ metadata:
   name: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
   namespace: {{.Values.namespace}}
   labels:
-    {{- include "jdmapp.labels" . | nindent 4 }}
+    {{- include "jdmapp.labels" . | indent 4 }}
 spec:
   selector:
     app: "{{ include "jdmapp.fullname" . }}-{{.Values.frontend.name}}"
