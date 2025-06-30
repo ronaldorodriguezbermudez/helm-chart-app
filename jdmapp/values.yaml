@@ -6,7 +6,7 @@ frontend:
   port: 3000
   image:
     name: ronaldorb/jdm-cars-frontend
-    tag: "v1.0.52"
+    tag: "v1.0.53"
   replicas: 1
 # backend
 backend:
@@ -14,7 +14,7 @@ backend:
   port: 5000
   image:
     name: ronaldorb/jdm-cars-backend
-    tag: "v1.0.52"
+    tag: "v1.0.53"
   replicas: 1
   service:
     # Do not change this name. It is hardcoded in the frontend configuration
@@ -26,7 +26,7 @@ db:
   name: db
   image:
     name: ronaldorb/jdm-cars-db
-    tag: "v1.0.52"
+    tag: "v1.0.53"
   replicas: 1
   port: 3306
 pvc:
